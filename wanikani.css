@@ -1,0 +1,1459 @@
+/* ==UserStyle==
+@name         WaniKani Breeze Dark
+@version      1.3.13
+@namespace    valeth.info
+@license      GPL-3.0
+@description  Dark theme for the WaniKani kanji learning website.
+@author       Valeth
+@homepageURL  https://valeth.info
+@supportURL   https://gitlab.com/valeth/wanikani-breeze-dark/issues
+
+@var color radicals-color    "Radicals Color"            #3DAEE9
+@var color kanji-color       "Kanji Color"               #FDBC4B
+@var color vocab-color       "Vocabulary Color"          #2ECC71
+@var color burned-color      "Burned Color"              #DA4453
+@var color review-reading-bg "Review Reading Background" #232629
+@var color review-meaning-bg "Review Meaning Background" #232629
+@advanced image footer-image-url  "Footer Image" {
+    footer-image-dark    "Dark"     "https://i.imgur.com/MRVqVnw.png"
+    footer-image-default "Original" "https://cdn-staging.wanikani.com/assets/default-v2/footer-bg-615f5af6597739a9fb5ee5e60c69e58065f99060cfbfd43157b32337eded61dd.gif"
+}
+@advanced dropdown review-char-bg "Review Character Background" {
+    review-char-bg-dark "Dark, like my soul" <<<EOT
+    EOT;
+    review-char-bg-colored "Colorful, Rainbows, Rainbows EVERYWHERE!" <<<EOT
+        #main-info.vocabulary, #reviews #character.vocabulary {
+            background-color: /*[[vocab-color]]*\/ !important;
+            color: #232629 !important;
+        }
+        #main-info.kanji, #reviews #character.kanji {
+            background-color: /*[[kanji-color]]*\/ !important;
+            color: #232629 !important;
+        }
+        #main-info.radical, #reviews #character.radical {
+            background-color: /*[[radicals-color]]*\/ !important;
+            color: #232629 !important;
+        }
+        #main-info.vocabulary #character, #main-info.kanji #character,
+        #main-info.radical #character, #main-info #meaning,
+        #reviews #character, #stats, #summary-button, #header-buttons {
+            color: #232629 !important;
+        }
+    EOT;
+}
+==/UserStyle== */
+
+/*
+This file was compiled with SCSS.
+To view the sources of this file visit https://gitlab.com/valeth/wanikani-breeze-dark
+*/
+@-moz-document domain(www.wanikani.com) {
+  [class*=character-grid] [class|="radical"]:not(i), .legend ul span.all, .sitemap__expandable-chunk[class*="radical"], .popover.srs .popover-content li:nth-child(1), [class*=radical] .progress > .bar, .radical-icon, [class*="highlight-radical"],
+  [class*="radical-highlight"], .kotoba-table-list table [class^="radical"], [id*="summary"] ul > [class^="radical"], #supplement-info [class^=radical],
+  #batch-items [class^=radical], #reviews #last-items [class*="radical"] [lang="ja"]:first-child, #related-items a > [class^=radical], #lessons .ui ul item.radical,
+  #reviews .ui ul item.radical, #timeline .review_info .rad, #keisei_section [id^=radical], .dropdown.open.radicals, .legend ul span.radicals {
+    background-color: /*[[radicals-color]]*/ !important;
+    color: #232629 !important; }
+
+  #main-info.radical, #reviews #character.radical, #ss_quiz.radical .question {
+    background-color: #232629 !important;
+    color: /*[[radicals-color]]*/ !important; }
+
+  [class*=character-grid] [class|="kanji"]:not(i), .dropdown.open.kanji, .legend ul span.kanji, .sitemap__expandable-chunk[class*="kanji"], .popover.srs .popover-content li:nth-child(2), [class*=kanji] .progress > .bar, .kanji-icon, [class*="highlight-kanji"],
+  [class*="kanji-highlight"], .dashboard-progress .progress-bar__progress, .kotoba-table-list table [class^="kanji"], [id*="summary"] ul > [class^="kanji"], #supplement-info [class^=kanji],
+  #batch-items [class^=kanji], #reviews #last-items [class*="kanji"] [lang="ja"]:first-child, #related-items a > [class^=kanji], #lessons .ui ul item.kanji,
+  #reviews .ui ul item.kanji, #timeline .review_info .kan, #keisei_section [id^=kanji] {
+    background-color: /*[[kanji-color]]*/ !important;
+    color: #232629 !important; }
+
+  #main-info.kanji, #reviews #character.kanji, #ss_quiz.kanji .question {
+    background-color: #232629 !important;
+    color: /*[[kanji-color]]*/ !important; }
+
+  [class*=character-grid] [class|="vocabulary"]:not(i), .dropdown.open.vocabulary, .legend ul span.vocabulary, .sitemap__expandable-chunk[class*="vocabulary"], .popover.srs .popover-content li:nth-child(3), [class*=vocabulary] .progress > .bar, .vocabulary-icon, [class*="highlight-vocabulary"],
+  [class*="vocabulary-highlight"], .kotoba-table-list table [class^="vocabulary"], [id*="summary"] ul > [class^="vocabulary"], #supplement-info [class^=vocabulary],
+  #batch-items [class^=vocabulary], #reviews #last-items [class*="vocabulary"] [lang="ja"]:first-child, #related-items a > [class^=vocabulary], #lessons .ui ul item.vocabulary,
+  #reviews .ui ul item.vocabulary, #timeline .review_info .voc, .vocabulary-progress li > a, .vocabulary-progress li > div {
+    background-color: /*[[vocab-color]]*/ !important;
+    color: #232629 !important; }
+
+  #main-info.vocabulary, #reviews #character.vocabulary, #ss_quiz.vocabulary .question {
+    background-color: #232629 !important;
+    color: /*[[vocab-color]]*/ !important; }
+
+  textarea, input, button, .btn, .page-list li > a, .nav-load > li:last-child a,
+  .button, #start-session, #batch-items [data-index="quiz"] > span, .btn-set li, #hotkeys, #lessons .ui #reorder,
+  #reviews .ui #reorder, [aria-describedby=divSRSGridSettings] .ui-dialog-buttonset button,
+  [aria-describedby=ui-id-2] .ui-dialog-buttonset button, #WKO_button, select, #back-dashboard {
+    border-radius: 5px !important;
+    color: #bcbcbc !important; }
+    textarea:focus, input:focus, button:focus, .btn:focus, .page-list li > a:focus, .nav-load > li:last-child a:focus,
+    .button:focus, #start-session:focus, #batch-items [data-index="quiz"] > span:focus, .btn-set li:focus, #hotkeys:focus, #lessons .ui #reorder:focus,
+    #reviews .ui #reorder:focus, [aria-describedby=divSRSGridSettings] .ui-dialog-buttonset button:focus,
+    [aria-describedby=ui-id-2] .ui-dialog-buttonset button:focus, #WKO_button:focus, select:focus, #back-dashboard:focus {
+      outline: none !important; }
+
+  textarea, input {
+    background-color: #1e2123 !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset, 2px 2px 2px rgba(0, 0, 0, 0.7) inset !important;
+    transition: box-shadow linear 0.2s !important; }
+    textarea:focus, input:focus {
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset !important; }
+
+  button, .btn, .page-list li > a, .nav-load > li:last-child a,
+  .button, #start-session, #batch-items [data-index="quiz"] > span, .btn-set li, #hotkeys, #lessons .ui #reorder,
+  #reviews .ui #reorder, [aria-describedby=divSRSGridSettings] .ui-dialog-buttonset button,
+  [aria-describedby=ui-id-2] .ui-dialog-buttonset button, #WKO_button, select, #back-dashboard {
+    background-color: #1e2123 !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important;
+    transition: box-shadow linear 0.2s, border linear 0.2s !important; }
+    button:hover, .btn:hover, .page-list li > a:hover, .nav-load > li:last-child a:hover,
+    .button:hover, #start-session:hover, #batch-items [data-index="quiz"] > span:hover, .btn-set li:hover, #hotkeys:hover, #lessons .ui #reorder:hover,
+    #reviews .ui #reorder:hover, [aria-describedby=divSRSGridSettings] .ui-dialog-buttonset button:hover,
+    [aria-describedby=ui-id-2] .ui-dialog-buttonset button:hover, #WKO_button:hover, select:hover, #back-dashboard:hover {
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) !important; }
+    button:focus, .btn:focus, .page-list li > a:focus, .nav-load > li:last-child a:focus,
+    .button:focus, #start-session:focus, #batch-items [data-index="quiz"] > span:focus, .btn-set li:focus, #hotkeys:focus, #lessons .ui #reorder:focus,
+    #reviews .ui #reorder:focus, [aria-describedby=divSRSGridSettings] .ui-dialog-buttonset button:focus,
+    [aria-describedby=ui-id-2] .ui-dialog-buttonset button:focus, #WKO_button:focus, select:focus, #back-dashboard:focus {
+      box-shadow: 0 0 5px rgba(61, 174, 233, 0.5) !important; }
+
+  textarea {
+    color: #bcbcbc !important;
+    -webkit-text-fill-color: #bcbcbc !important; }
+
+  .alert, .system-alert,
+  .alert-where-user-scripts-cant-ignore, .legend, .page-list, #main footer ul, #subscriptions footer ul, #public-profile footer ul, .account-subscription .account-subscription-plan,
+  #account-subscription-coupon-form #coupon,
+  .account-subscription-payment-processor-info,
+  .account-subscription form .control-group input[type="text"], .account-billing div.bg-default, .api section, .dashboard section, .individual-item .span12 > section, .individual-item + section, section[class^=lattice-], section[id|=level], .settings-section, [id*="summary"] [id^="radical"], [id*="summary"] [id^="kanji"], [id*="summary"] [id^="vocabulary"], [id*="summary"] [id^="correct"], [id*="summary"] [id^="incorrect"], #review-stats, #supplement-info, #information, #lessons .ui,
+  #reviews .ui, #timeline, [aria-describedby=divSRSGridSettings],
+  [aria-describedby=ui-id-2], #item_marker_body, #marked_items, .wklc, #ss_quiz, #keisei_modal_settings,
+  #keisei_modal_info {
+    background-color: #232629 !important;
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important;
+    margin-bottom: 20px;
+    margin-top: 20px; }
+
+  .popover {
+    background-color: #4d4d4d !important;
+    border-color: #4d4d4d !important;
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important; }
+
+  #wkof_ds .ui-dialog, #timeline .review_info .inner {
+    background-color: #191c1e !important;
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important; }
+
+  #enlarge-hover,
+  [class*="-icon"], [id*="summary"] li, #lesson #supplement-info li span,
+  #lesson #batch-items li span, #related-items span, #lessons .ui ul item,
+  #reviews .ui ul item {
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important; }
+
+  body, #screen-lesson-ready, #screen-quiz-ready, .avatar {
+    background-blend-mode: color-burn !important;
+    background-color: #191c1e !important;
+    background-image: url("https://cdn-staging.wanikani.com/assets/default-v2/bg-texture-f26fc7a5696f53a272eaffdfdd43eb215d33ef508c89ed2d0501903eaad2f29a.png") !important;
+    background-repeat: repeat !important; }
+
+  .legend ul .locked, section[class^=lattice-] li:not([data-sorted]) > a {
+    color: #fff !important;
+    filter: brightness(0.2) !important; }
+
+  .locked-item, .character-item.locked {
+    background-image: url("https://cdn-staging.wanikani.com/assets/default-v2/stripes-5e8494366c1615da046bd0f587cfeef6786e7ba17863df1329767ca3b89140e0.png") !important; }
+
+  button, .btn, .page-list li > a, .nav-load > li:last-child a,
+  .button, #start-session, #batch-items [data-index="quiz"] > span, .btn-set li, #hotkeys, #lessons .ui #reorder,
+  #reviews .ui #reorder, [aria-describedby=divSRSGridSettings] .ui-dialog-buttonset button,
+  [aria-describedby=ui-id-2] .ui-dialog-buttonset button, #WKO_button, [class|=account-subscription] h3,
+  [class|=account-billing] h3, .kotoba-table-list h3, .forum-topics-list h3,
+  .blog h3, [class|=account-subscription] tr,
+  [class|=account-billing] tr, .kotoba-table-list tr, .forum-topics-list tr,
+  .blog tr, #enlarge-hover,
+  [class*="-icon"], [id*="summary"] li, #lesson #supplement-info li span,
+  #lesson #batch-items li span, #related-items span, #lessons .ui ul item,
+  #reviews .ui ul item, input[type="checkbox"], input[type="range"], .srs-progress ul > li, .kotoba-table-list .none-available, .see-more, #review-stats [id^="review-stats"], #timeline .review_info .tot, .alert, .system-alert,
+  .alert-where-user-scripts-cant-ignore, [class*=character-grid] > li, .popover .popover-content li, .popover .bar, .progress, .progress > .bar, [class*="highlight"], .newbie, .see-more a, #main-info, #reviews #character, #wkof_ds .ui-dialog, #wkof_ds .ui-dialog-buttonpane, #wkof_ds .ui-tabs-tab, #wki_settings_cancel,
+  #wki_settings_save, #wki_settings_button_label_bgcolor,
+  #wki_settings_button_label_textcolor,
+  #wki_settings_timer_show_next_item, #timeline .review_info .rad, #timeline .review_info .kan, #timeline .review_info .voc, #ss_quiz .quiz-progress, #ss_quiz .quiz-progress .quiz-progress-bar, #ss_quiz .qtype, #keisei_section .character-item {
+    background-image: none !important; }
+
+  .blog td, input[type="checkbox"], input[type="range"], .srs-progress ul > li, .kotoba-table-list .none-available, .see-more, #review-stats [id^="review-stats"], #timeline .review_info .tot, blockquote, .audio-btn, [class*=character-grid] > li > a, .dropdown.open [class*="toggle"], .legend ul .locked, .legend [class*="lattice"], .popover .popover-title, .note-meaning fieldset,
+  .note-reading fieldset, .user-synonyms, .user-synonyms li::after, .user-synonyms-add-btn::before, #main footer li, #subscriptions footer li, #public-profile footer li, #main footer a,
+  #main footer a:hover, #subscriptions footer a,
+  #subscriptions footer a:hover, #public-profile footer a,
+  #public-profile footer a:hover, .lessons-and-reviews__button, .review-status li, .kotoba-table-list .none-available:hover, .individual-item h2, .individual-item .additional-info, section[class^=lattice-] li, section[class^=lattice-] li > a, section[id|=level] header, .explanation-item-mnemonics,
+  .explanation-item-radicals,
+  .explanation-item-kanji,
+  .explanation-item-vocabulary,
+  .explanation-item-lessons-reviews,
+  .explanation-item-srs, #stats *,
+  #summary-button *,
+  #header-buttons *, .srs-up, .srs-down, #answer-form fieldset.correct button, #answer-form fieldset.incorrect button, #answer-form button, #additional-content li > span, #all-info, .srs-levels li span, .wall-of-shame, #wkof_ds .ui-dialog-titlebar, #wkof_ds .ui-dialog-buttonpane, #wkof_ds .ui-dialog-content fieldset.wkof_group, #wkof_ds .ui-tabs-tab, #wki_button #wki_mimic_button,
+  #wki_button .wki_item_wrapper,
+  #wki_button .wki_button_item_label, #wki_srs_popup_wrapper .wki_srs_popup_icon,
+  #wki_srs_popup_wrapper #wki_srs_popup_message, #lessons .ui-small .icon-minus,
+  #reviews .ui-small .icon-minus, #lessons .ui .icon-minus,
+  #reviews .ui .icon-minus, #lessons .ui-small .icon-plus,
+  #reviews .ui-small .icon-plus, #lessons .ui .icon-plus,
+  #reviews .ui .icon-plus, #lessons .ui-small,
+  #reviews .ui-small, #timeline .bar_style select, #timeline .graph .bkgd, [aria-describedby=divSRSGridSettings] .ui-widget-header button,
+  [aria-describedby=divSRSGridSettings] .ui-widget-header .ui-button-icon,
+  [aria-describedby=ui-id-2] .ui-widget-header button,
+  [aria-describedby=ui-id-2] .ui-widget-header .ui-button-icon, [aria-describedby=divSRSGridSettings] .ui-dialog-buttonpane,
+  [aria-describedby=divSRSGridSettings] .ui-dialog-titlebar,
+  [aria-describedby=divSRSGridSettings] .ui-dialog-content tr:hover,
+  [aria-describedby=ui-id-2] .ui-dialog-buttonpane,
+  [aria-describedby=ui-id-2] .ui-dialog-titlebar,
+  [aria-describedby=ui-id-2] .ui-dialog-content tr:hover, .wklc .wklc-item, .wklc .wklc-max-score-edit label, #ss_quiz .qwrap, #ss_quiz .help, #ss_quiz .answer {
+    background-color: transparent !important; }
+
+  [class|=account-subscription] h3 .heading-symbol,
+  [class|=account-billing] h3 .heading-symbol, .kotoba-table-list h3 .heading-symbol, .forum-topics-list h3 .heading-symbol,
+  .blog h3 .heading-symbol, .audio-btn, .audio-btn:hover, .audio-btn:focus, input[type="checkbox"], .dropdown [class*="toggle"] > span, .legend ul span, .popover .popover-title, #search.in, [class*="highlight"], .lessons-and-reviews__button, .srs-progress ul > li, .kotoba-table-list .none-available, .kotoba-table-list .none-available > td div, .see-more, .see-more div, section[class^=lattice-] li > a, #review-stats [id^="review-stats"], #main-info, #answer-form input, #answer-form button, #additional-content li > span, #additional-content li > span:hover::before, #kana-chart li:hover, .srs-levels li span, #wki_button #wki_mimic_button,
+  #wki_button .wki_item_wrapper,
+  #wki_button .wki_button_item_label, #lessons .ui-small .icon-minus,
+  #reviews .ui-small .icon-minus, #lessons .ui .icon-minus,
+  #reviews .ui .icon-minus, #lessons .ui-small .icon-plus,
+  #reviews .ui-small .icon-plus, #lessons .ui .icon-plus,
+  #reviews .ui .icon-plus, #timeline .bar_style select, #timeline .range_input, [aria-describedby=divSRSGridSettings] .ui-widget-header button,
+  [aria-describedby=divSRSGridSettings] .ui-widget-header .ui-button-icon,
+  [aria-describedby=ui-id-2] .ui-widget-header button,
+  [aria-describedby=ui-id-2] .ui-widget-header .ui-button-icon, .wklc .wklc-item, #keisei_modal_settings .modal-header,
+  #keisei_modal_info .modal-header, #keisei_modal_settings .modal-footer,
+  #keisei_modal_info .modal-footer {
+    box-shadow: none !important; }
+
+  textarea, input, button, .btn, .page-list li > a, .nav-load > li:last-child a,
+  .button, #start-session, #batch-items [data-index="quiz"] > span, .btn-set li, #hotkeys, #lessons .ui #reorder,
+  #reviews .ui #reorder, [aria-describedby=divSRSGridSettings] .ui-dialog-buttonset button,
+  [aria-describedby=ui-id-2] .ui-dialog-buttonset button, #WKO_button, select, #back-dashboard, .alert, .system-alert,
+  .alert-where-user-scripts-cant-ignore, .legend, .page-list, #main footer ul, #subscriptions footer ul, #public-profile footer ul, .account-subscription .account-subscription-plan,
+  #account-subscription-coupon-form #coupon,
+  .account-subscription-payment-processor-info,
+  .account-subscription form .control-group input[type="text"], .account-billing div.bg-default, .api section, .dashboard section, .individual-item .span12 > section, .individual-item + section, section[class^=lattice-], section[id|=level], .settings-section, [id*="summary"] [id^="radical"], [id*="summary"] [id^="kanji"], [id*="summary"] [id^="vocabulary"], [id*="summary"] [id^="correct"], [id*="summary"] [id^="incorrect"], #review-stats, #supplement-info, #information, #lessons .ui,
+  #reviews .ui, #timeline, [aria-describedby=divSRSGridSettings],
+  [aria-describedby=ui-id-2], #item_marker_body, #marked_items, .wklc, #ss_quiz, #keisei_modal_settings,
+  #keisei_modal_info, #wkof_ds .ui-dialog, #timeline .review_info .inner, [class|=account-subscription] h3 .heading-symbol,
+  [class|=account-billing] h3 .heading-symbol, .kotoba-table-list h3 .heading-symbol, .forum-topics-list h3 .heading-symbol,
+  .blog h3 .heading-symbol, #enlarge-hover,
+  [class*="-icon"], [id*="summary"] li, #lesson #supplement-info li span,
+  #lesson #batch-items li span, #related-items span, #lessons .ui ul item,
+  #reviews .ui ul item, [class*=character-grid] > li, .dropdown-menu, .navbar-inner, .global-header, .page-list-header span, .popover .popover-content li, .review-status, .review-status li, .kotoba-table-list .none-available > td, .see-more div, [id*="summary"] nav, #question-type, #answer-form input, #answer-form button, #wkof_ds .ui-dialog-titlebar, #wkof_ds .ui-dialog-content fieldset.wkof_group, #wkof_ds .ui-tabs-tab, #wki_button #wki_mimic_button,
+  #wki_button .wki_item_wrapper,
+  #wki_button .wki_button_item_label, [id|=qtip], [id|=qtip] .qtip-titlebar,
+  [id|=qtip] .qtip-title, #lessons .ui-small .icon-minus,
+  #reviews .ui-small .icon-minus, #lessons .ui .icon-minus,
+  #reviews .ui .icon-minus, #lessons .ui-small .icon-plus,
+  #reviews .ui-small .icon-plus, #lessons .ui .icon-plus,
+  #reviews .ui .icon-plus, .progress-entries .popover, [aria-describedby=divSRSGridSettings] .ui-widget-header,
+  [aria-describedby=ui-id-2] .ui-widget-header, [aria-describedby=divSRSGridSettings] .ui-widget-header button,
+  [aria-describedby=divSRSGridSettings] .ui-widget-header .ui-button-icon,
+  [aria-describedby=ui-id-2] .ui-widget-header button,
+  [aria-describedby=ui-id-2] .ui-widget-header .ui-button-icon, #ss_quiz .help, #ss_quiz .qtype, #keisei_section .character-item {
+    border: none !important; }
+
+  .character-item *, .dropdown a, .dropdown i, .dropdown span, .dropdown li, [class*="rad"] *, .dashboard a, .kotoba-table-list span, .kotoba-table-list time, .kotoba-table-list i, section[class^=lattice-] li > a *, [id*="summary"] li *, #reviews #character *, #related-items span > i, #stats *,
+  #summary-button *,
+  #header-buttons * {
+    color: inherit !important; }
+
+  .highlight-reading, #question-type.reading {
+    background-color: /*[[review-reading-bg]]*/ !important; }
+
+  .highlight-meaning, #question-type.meaning {
+    background-color: /*[[review-meaning-bg]]*/ !important; }
+
+  :root {
+    --inverted-text-color: #434343;
+    --kanji-color: /*[[kanji-color]]*/;
+    --page-background: #31363b;
+    --radical-color: /*[[radicals-color]]*/;
+    --section-background: #232629;
+    --text-color: #bcbcbc;
+    --vocabulary-color: /*[[vocab-color]]*/; }
+
+  * {
+    text-shadow: none !important; }
+
+  body {
+    color: #bcbcbc; }
+
+  p, pre, strong, small, li, time, h1, h2, h3, h4, label, i {
+    color: #bcbcbc !important; }
+
+  a {
+    color: #3daee9;
+    text-shadow: none !important; }
+
+  hr {
+    border-color: #31363b !important; }
+
+  footer a {
+    color: #bcbcbc !important; }
+
+  .bg-white {
+    background-color: inherit; }
+
+  [class^="border-gray"] {
+    border-color: #31363b; }
+
+  .btn-danger {
+    background-color: #da4453 !important;
+    color: #434343 !important; }
+
+  input[type="checkbox"] {
+    appearance: none;
+    border: 1px solid #bcbcbc !important;
+    border-radius: 3px !important;
+    height: 18px !important;
+    margin-right: 8px;
+    vertical-align: text-top;
+    width: 18px !important; }
+    input[type="checkbox"]:checked {
+      border: 1px solid #1d99f3 !important;
+      padding: 0 !important; }
+      input[type="checkbox"]:checked::after {
+        background-color: #1d99f3 !important;
+        border-radius: 1px;
+        content: '';
+        display: block;
+        height: calc(100% - 4px);
+        left: 2px;
+        position: relative;
+        top: 2px;
+        width: calc(100% - 4px); }
+    input[type="checkbox"]:disabled {
+      border-color: #565656 !important; }
+      input[type="checkbox"]:disabled::after {
+        background-color: #565656 !important; }
+    input[type="checkbox"]:focus, input[type="checkbox"]:hover {
+      border-color: #96d0f9 !important; }
+      input[type="checkbox"]:focus::after, input[type="checkbox"]:hover::after {
+        background-color: #96d0f9 !important; }
+
+  #user_password:focus {
+    border-left: 2px solid #ed1515 !important;
+    border-right: 2px solid #ed1515 !important; }
+
+  #user_current_password:focus {
+    border-left: 2px solid #f67400 !important;
+    border-right: 2px solid #f67400 !important; }
+
+  table {
+    background-color: inherit !important;
+    border-collapse: separate !important; }
+    table tr {
+      background-color: inherit !important;
+      border-radius: 5px !important; }
+
+  .alert {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 92vw; }
+    .alert h3, .alert a, .alert p, .alert span, .alert i, .alert time {
+      color: inherit !important; }
+
+  .alert-info {
+    background-color: #ff8e2a !important;
+    color: #434343 !important; }
+    .alert-info h4 {
+      color: #434343 !important; }
+
+  .system-alert,
+  .alert-where-user-scripts-cant-ignore {
+    background-color: #ff8e2a !important;
+    color: #434343 !important; }
+    .system-alert h2, .system-alert h3, .system-alert i, .system-alert p, .system-alert time,
+    .alert-where-user-scripts-cant-ignore h2,
+    .alert-where-user-scripts-cant-ignore h3,
+    .alert-where-user-scripts-cant-ignore i,
+    .alert-where-user-scripts-cant-ignore p,
+    .alert-where-user-scripts-cant-ignore time {
+      color: inherit !important; }
+    .system-alert h2, .system-alert h3,
+    .alert-where-user-scripts-cant-ignore h2,
+    .alert-where-user-scripts-cant-ignore h3 {
+      border-bottom: 1px solid #31363b !important; }
+
+  .reviews-alert::before {
+    background-color: #ff8e2a !important;
+    bottom: 17px !important;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%) !important;
+    z-index: 3 !important; }
+
+  li.burned {
+    filter: brightness(0.5) !important; }
+
+  [class*=character-grid] {
+    background-color: #1e2123 !important;
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset, 2px 2px 2px rgba(0, 0, 0, 0.7) inset !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    padding: 5px !important; }
+    [class*=character-grid] > li {
+      border-radius: 5px !important;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important;
+      margin: 5px !important; }
+      [class*=character-grid] > li.locked {
+        filter: brightness(0.7) !important; }
+    [class*=character-grid] img.radical-image {
+      filter: unset !important; }
+    [class*=character-grid] img.kanji-image {
+      filter: unset !important; }
+    [class*=character-grid] img.vocabulary-image {
+      filter: unset !important; }
+
+  .dropdown:not(.open).radicals > [class*="toggle"]:hover > span {
+    border-color: /*[[radicals-color]]*/ !important; }
+  .dropdown:not(.open).kanji > [class*="toggle"]:hover > span {
+    border-color: /*[[kanji-color]]*/ !important; }
+  .dropdown:not(.open).vocabulary > [class*="toggle"]:hover > span {
+    border-color: /*[[vocab-color]]*/ !important; }
+  .dropdown.open {
+    background-color: #33383c !important; }
+    .dropdown.open.radicals [class$="menu"]::before, .dropdown.open.radicals [class$="menu"]::after {
+      border-bottom-color: /*[[radicals-color]]*/ !important;
+      color: /*[[radicals-color]]*/ !important; }
+    .dropdown.open.kanji [class$="menu"]::before, .dropdown.open.kanji [class$="menu"]::after {
+      border-bottom-color: /*[[kanji-color]]*/ !important;
+      color: /*[[kanji-color]]*/ !important; }
+    .dropdown.open.vocabulary [class$="menu"]::before, .dropdown.open.vocabulary [class$="menu"]::after {
+      border-bottom-color: /*[[vocab-color]]*/ !important;
+      color: /*[[vocab-color]]*/ !important; }
+    .dropdown.open [class*="toggle"] {
+      box-shadow: 1px 0 2px rgba(0, 0, 0, 0.7) inset, -1px 0 2px rgba(0, 0, 0, 0.7) inset !important; }
+      .dropdown.open [class*="toggle"] > span {
+        border: 0.3em solid #232629 !important; }
+    .dropdown.open > .dropdown-menu {
+      top: 112% !important; }
+      .dropdown.open > .dropdown-menu li:not(.nav-header) {
+        background-color: inherit !important; }
+        .dropdown.open > .dropdown-menu li:not(.nav-header) > a:hover {
+          background-color: inherit !important;
+          filter: brightness(0.8) !important; }
+      .dropdown.open > .dropdown-menu::before, .dropdown.open > .dropdown-menu::after {
+        border-bottom-color: #33383c !important;
+        color: #33383c !important; }
+
+  .dropdown-menu {
+    background-color: inherit !important;
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important; }
+
+  .legend .percentage-0-20 {
+    background-color: #f47750 !important; }
+  .legend .percentage-21-40 {
+    background-color: #c9ce3b !important; }
+  .legend .percentage-41-60 {
+    background-color: #3daee9 !important; }
+  .legend .percentage-61-80 {
+    background-color: #1d99f3 !important; }
+  .legend .percentage-81-100 {
+    background-color: #1cdc9a !important; }
+  .legend .apprentice-lattice {
+    color: #1d99f3 !important; }
+  .legend .guru-lattice {
+    color: #1cdc9a !important; }
+  .legend .master-lattice {
+    color: #c9ce3b !important; }
+  .legend .enlighten-lattice {
+    color: #f67400 !important; }
+  .legend .burned-lattice {
+    color: /*[[burned-color]]*/ !important; }
+  .legend ul span {
+    margin-left: 1vh !important;
+    margin-right: 1vh !important; }
+    .legend ul span.burned {
+      background-color: /*[[burned-color]]*/ !important;
+      color: #434343 !important; }
+  .legend [class*="percentage"],
+  .legend [class*="lattice"] {
+    filter: brightness(0.8) !important; }
+
+  .navbar-inner {
+    background-color: #232629 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+    z-index: 1030 !important;
+    background-image: none !important; }
+
+  .global-header {
+    background: none;
+    background-color: #232629;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7); }
+    .global-header .logo {
+      filter: brightness(80%) hue-rotate(226deg); }
+
+  .navigation__toggle[data-expanded="true"] {
+    background-color: transparent; }
+
+  .navigation-shortcut a {
+    color: #bcbcbc; }
+    .navigation-shortcut a span {
+      background: transparent;
+      color: #c9ce3b; }
+  .navigation-shortcut[data-count="0"] span {
+    background: transparent;
+    color: #bcbcbc; }
+
+  .sitemap {
+    background: #232629; }
+    .sitemap--divider {
+      border-top-color: #31363b; }
+    .sitemap__grouped-pages, .sitemap__pages {
+      background: #232629; }
+    .sitemap__expandable-chunk {
+      background-color: #232629 !important; }
+      .sitemap__expandable-chunk::before {
+        background: #232629; }
+      .sitemap__expandable-chunk[class*="radical"]::before {
+        background: /*[[radicals-color]]*/; }
+      .sitemap__expandable-chunk[class*="radical"] * {
+        color: inherit !important; }
+      .sitemap__expandable-chunk[class*="radical"] ul {
+        background: transparent !important; }
+      .sitemap__expandable-chunk[class*="kanji"]::before {
+        background: /*[[kanji-color]]*/; }
+      .sitemap__expandable-chunk[class*="kanji"] * {
+        color: inherit !important; }
+      .sitemap__expandable-chunk[class*="kanji"] ul {
+        background: transparent !important; }
+      .sitemap__expandable-chunk[class*="vocabulary"]::before {
+        background: /*[[vocab-color]]*/; }
+      .sitemap__expandable-chunk[class*="vocabulary"] * {
+        color: inherit !important; }
+      .sitemap__expandable-chunk[class*="vocabulary"] ul {
+        background: transparent !important; }
+    .sitemap__page a {
+      color: #bcbcbc !important; }
+
+  .page-list ul {
+    align-items: center !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    padding: 5px !important; }
+  .page-list li {
+    margin: 2px !important; }
+    .page-list li > a {
+      background-color: #3daee9 !important;
+      color: #434343 !important; }
+
+  .page-list-header {
+    width: 110px !important; }
+
+  .popover .popover-title {
+    opacity: inherit; }
+  .popover .popover-content li {
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important;
+    margin-bottom: 3px !important;
+    margin-top: 3px !important; }
+    .popover .popover-content li span {
+      color: #31363b !important; }
+  .popover .bar {
+    background-color: #3daee9 !important;
+    line-height: 100% !important; }
+  .popover.srs .arrow,
+  .popover.srs .arrow::after, .popover.lattice .arrow,
+  .popover.lattice .arrow::after {
+    border-right-color: #4d4d4d !important;
+    opacity: inherit !important; }
+
+  .progress {
+    align-items: center !important;
+    background-color: #1e2123 !important;
+    border-radius: 10px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset, 2px 2px 2px rgba(0, 0, 0, 0.7) inset !important;
+    display: flex !important; }
+    .progress > .bar {
+      background-color: #1d99f3 !important;
+      border-radius: 10px !important;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important;
+      height: 50% !important;
+      margin: 5px !important;
+      opacity: 0.75 !important; }
+      .progress > .bar > span {
+        background-color: #484848 !important;
+        border-radius: 5px !important;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important;
+        color: #bcbcbc !important; }
+        .progress > .bar > span::after {
+          border-top-color: #484848 !important; }
+      .progress > .bar > .threshold {
+        box-shadow: 1px 0 0 #4d4d4d !important;
+        color: #4d4d4d !important;
+        height: 60% !important;
+        line-height: 110% !important;
+        opacity: 0.50 !important; }
+
+  #progress section {
+    margin-left: 2vw !important;
+    margin-right: 2vw !important; }
+
+  #search #main-ico-search {
+    top: unset; }
+
+  .user-synonyms {
+    margin-left: 5px; }
+    .user-synonyms li, .user-synonyms i {
+      color: #bcbcbc !important; }
+
+  .user-synonyms-add-form input {
+    padding-left: 5px !important; }
+  .user-synonyms-add-form button {
+    height: 1.8em !important;
+    min-width: 1.8em !important; }
+
+  .radical-icon--locked {
+    filter: brightness(0.7); }
+
+  .kanji-icon--locked {
+    filter: brightness(0.7); }
+
+  .vocabulary-icon--locked {
+    filter: brightness(0.7); }
+
+  .japanese-font-styling-correction,
+  .enlarge-hover {
+    color: #232629 !important; }
+
+  [class*="highlight"] {
+    border-radius: 3px !important; }
+    [class*="highlight"] > span {
+      color: #434343 !important; }
+
+  .highlight-reading > span,
+  .highlight-meaning > span {
+    color: #bcbcbc !important; }
+
+  #main footer, #subscriptions footer, #public-profile footer {
+    background-image: url(/*[[footer-image-url]]*/) !important;
+    background-position: top !important; }
+    #main footer li:last-child, #subscriptions footer li:last-child, #public-profile footer li:last-child {
+      background-color: #da4453 !important;
+      border-bottom-right-radius: 5px !important;
+      border-top-right-radius: 5px !important;
+      color: #434343 !important; }
+      #main footer li:last-child span, #subscriptions footer li:last-child span, #public-profile footer li:last-child span {
+        color: #434343 !important; }
+    #main footer a,
+    #main footer a:hover, #subscriptions footer a,
+    #subscriptions footer a:hover, #public-profile footer a,
+    #public-profile footer a:hover {
+      padding-top: 10px !important;
+      transition: none !important; }
+    #main footer a:hover, #subscriptions footer a:hover, #public-profile footer a:hover {
+      text-decoration: underline !important; }
+
+  .account #user_lesson_batch_size {
+    background-color: #232629 !important;
+    border-color: #3daee9 !important; }
+
+  .account-subscription .account-subscription-plan [type="button"] {
+    border-radius: 0 0 5px 5px !important; }
+  .account-subscription .account-subscription-plan-active {
+    border-color: #f67400 !important;
+    box-shadow: 0 0 5px rgba(246, 116, 0, 0.5) !important; }
+    .account-subscription .account-subscription-plan-active [type="button"] {
+      background: #f67400 !important; }
+  .account-subscription form .control-group [type="text"]:focus {
+    border: none !important;
+    box-shadow: 0 0 5px rgba(61, 174, 233, 0.5) !important; }
+
+  .account-subscription-payment-submit button {
+    background-color: #f67400 !important;
+    border-radius: 5px !important;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    color: #434343 !important; }
+  .account-subscription-payment-submit [type=submit]:disabled {
+    background-color: #f67400 !important;
+    border-radius: 5px !important;
+    box-shadow: 0 0 5px rgba(246, 116, 0, 0.5); }
+
+  #account-subscription-coupon-form #coupon:focus {
+    border: none !important;
+    box-shadow: 0 0 5px rgba(61, 174, 233, 0.5) !important; }
+
+  .account-subscription-details-total {
+    color: #bcbcbc !important; }
+    .account-subscription-details-total sup {
+      color: #bcbcbc !important; }
+
+  .account-subscription-details table tr.account-subscription-details-total th, .account-subscription-details table tr.account-subscription-details-total td, .account-subscription-details table tr.account-subscription-details-total td.account-subscription-details-plan-edit {
+    border-color: #bcbcbc !important; }
+  .account-subscription-details table tr.account-subscription-details-total td {
+    border-bottom: 2px solid !important; }
+
+  .api h3 {
+    font-weight: bold !important; }
+  .api pre {
+    background-color: #31363b !important; }
+  .api code {
+    background-color: #31363b !important;
+    border: none !important; }
+
+  .dashboard .progress-and-forecast {
+    grid-gap: 1rem 1.5rem;
+    grid-template-rows: max-content auto; }
+    .dashboard .progress-and-forecast section {
+      margin: 0; }
+  .dashboard .dashboard-sub-section {
+    margin: 0 !important; }
+  .dashboard .row .span12 .row {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px !important; }
+    @media (max-width: 767px) {
+      .dashboard .row .span12 .row .span4:nth-child(2) {
+        margin-bottom: 20px !important;
+        margin-top: 20px !important; } }
+  .dashboard .row .span12 + .span12 {
+    margin-bottom: 20px !important;
+    margin-top: 0 !important; }
+
+  .newbie hr {
+    border-bottom-color: #31363b !important;
+    border-top-color: #31363b !important; }
+
+  .lessons-and-reviews__button {
+    background-size: auto 135px; }
+    .lessons-and-reviews__button span {
+      background-color: transparent; }
+  .lessons-and-reviews__lessons-button--1 span, .lessons-and-reviews__lessons-button--100 span, .lessons-and-reviews__reviews-button--1 span, .lessons-and-reviews__reviews-button--100 span {
+    color: #c9ce3b; }
+
+  .review-forecast__day {
+    border-bottom: 1px solid #31363b;
+    border-radius: 0; }
+    .review-forecast__day-header::before, .review-forecast__day-header::after {
+      display: none; }
+    .review-forecast__day-label {
+      border-bottom: 1px solid #31363b;
+      border-radius: 0;
+      padding-bottom: 0.5rem; }
+    .review-forecast__day.is-collapsed .review-forecast__day-label {
+      background-color: transparent;
+      border-bottom-width: 0;
+      padding-bottom: 0; }
+  .review-forecast__hour {
+    background-color: #31363b !important;
+    border-radius: 0 !important;
+    padding-bottom: 0; }
+    .review-forecast__hour th, .review-forecast__hour td {
+      border-color: #31363b; }
+  .review-forecast__change {
+    border-right-color: #31363b; }
+
+  .srs-progress ul > li:not(:last-child) {
+    border-right: 1px solid #31363b; }
+  .srs-progress ul > #apprentice > span {
+    color: #1d99f3 !important; }
+  .srs-progress ul > #guru > span {
+    color: #1cdc9a !important; }
+  .srs-progress ul > #master > span {
+    color: #c9ce3b !important; }
+  .srs-progress ul > #enlightened > span {
+    color: #f67400 !important; }
+  .srs-progress ul > #burned > span {
+    color: /*[[burned-color]]*/ !important; }
+
+  .dashboard-progress .progress-bar {
+    background-color: #1e2123;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset, 2px 2px 2px rgba(0, 0, 0, 0.7) inset;
+    height: 1.5rem; }
+    .dashboard-progress .progress-bar__progress, .dashboard-progress .progress-bar__label {
+      height: 1rem;
+      margin: 0.25rem; }
+    .dashboard-progress .progress-bar__label, .dashboard-progress .progress-bar__extra-label {
+      color: #434343 !important;
+      font-size: 0.8rem;
+      line-height: 1.2; }
+  .dashboard-progress .progress-entries {
+    color: #434343 !important; }
+
+  .kotoba-table-list {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    min-height: 100%;
+    position: relative !important; }
+    .kotoba-table-list table {
+      margin-bottom: 38px !important; }
+      .kotoba-table-list table tr:hover {
+        filter: brightness(0.8) !important; }
+    .kotoba-table-list .none-available > td div {
+      border-color: #31363b !important; }
+    .kotoba-table-list .none-available > td i::before {
+      color: #31363b !important; }
+    .kotoba-table-list .none-available:hover {
+      filter: none !important; }
+    .kotoba-table-list .see-more {
+      bottom: 0 !important;
+      position: absolute !important;
+      width: 100% !important; }
+
+  .forum-topics-list,
+  .blog {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important; }
+    .forum-topics-list tr:hover,
+    .blog tr:hover {
+      filter: brightness(0.8) !important; }
+
+  .see-more a {
+    background-color: #1c1e21 !important;
+    border-radius: 0 0 5px 5px !important;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.7) !important;
+    margin-top: 3px !important; }
+
+  .individual-item .level-icon {
+    background-color: #232629 !important; }
+  .individual-item .span12 > section {
+    padding: 10px !important; }
+  .individual-item section > h2 {
+    border-bottom: 1px solid #4d4d4d !important; }
+  .individual-item h2 {
+    color: #bcbcbc !important; }
+  .individual-item + section {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 1170px !important; }
+    @media (min-width: 979px) and (max-width: 1199px) {
+      .individual-item + section {
+        width: 940px !important; } }
+    @media (min-width: 767px) and (max-width: 979px) {
+      .individual-item + section {
+        width: 724px !important; } }
+    @media (max-width: 767px) {
+      .individual-item + section {
+        width: calc(100% - 40px) !important; } }
+    .individual-item + section [class$=-streak] span {
+      background-color: inherit !important; }
+
+  section[class^=lattice-] {
+    padding: 10px; }
+    section[class^=lattice-] ul {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important; }
+    section[class^=lattice-] li {
+      margin: 1vh 10px !important; }
+      section[class^=lattice-] li > a {
+        filter: brightness(0.8) !important; }
+    section[class^=lattice-] [data-sorted] .percentage-0-20 {
+      color: #f47750 !important; }
+    section[class^=lattice-] [data-sorted] .percentage-21-40 {
+      color: #c9ce3b !important; }
+    section[class^=lattice-] [data-sorted] .percentage-41-60 {
+      color: #3daee9 !important; }
+    section[class^=lattice-] [data-sorted] .percentage-61-80 {
+      color: #1d99f3 !important; }
+    section[class^=lattice-] [data-sorted] .percentage-81-100 {
+      color: #1cdc9a !important; }
+    section[class^=lattice-] [data-sorted] .apprentice-lattice {
+      color: #1d99f3 !important; }
+    section[class^=lattice-] [data-sorted] .guru-lattice {
+      color: #1cdc9a !important; }
+    section[class^=lattice-] [data-sorted] .master-lattice {
+      color: #c9ce3b !important; }
+    section[class^=lattice-] [data-sorted] .enlighten-lattice {
+      color: #f67400 !important; }
+    section[class^=lattice-] [data-sorted] .burned-lattice {
+      color: /*[[burned-color]]*/ !important; }
+
+  .level-icon {
+    color: #bcbcbc !important; }
+
+  .next a, .previous a {
+    color: #bcbcbc !important; }
+
+  .alt-character-list a {
+    color: #bcbcbc !important; }
+
+  .recently-unlocked-item {
+    color: #232629 !important; }
+
+  section[id|=level] {
+    padding: 10px; }
+    section[id|=level] header {
+      margin-bottom: 5px; }
+
+  #explanation .bg-angled {
+    background-color: #31363b !important; }
+
+  .explanation-item-mnemonics,
+  .explanation-item-radicals,
+  .explanation-item-kanji,
+  .explanation-item-vocabulary,
+  .explanation-item-lessons-reviews,
+  .explanation-item-srs {
+    color: #bcbcbc !important; }
+
+  [id*="summary"] [id^="radical"] h2 {
+    color: /*[[radicals-color]]*/ !important; }
+  [id*="summary"] [id^="radical"] div {
+    display: block !important; }
+  [id*="summary"] [id^="kanji"] h2 {
+    color: /*[[kanji-color]]*/ !important; }
+  [id*="summary"] [id^="kanji"] div {
+    display: block !important; }
+  [id*="summary"] [id^="vocabulary"] h2 {
+    color: /*[[vocab-color]]*/ !important; }
+  [id*="summary"] [id^="vocabulary"] div {
+    display: block !important; }
+  [id*="summary"] [id^="correct"] h2 {
+    color: #2a9c5a !important; }
+  [id*="summary"] [id^="incorrect"] h2 {
+    color: #b11f1f !important; }
+  [id*="summary"] h2 {
+    background-color: #1c1e21 !important;
+    border-radius: 5px 5px 0 0 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important; }
+    [id*="summary"] h2 strong {
+      color: inherit !important; }
+  [id*="summary"] h3 {
+    border-bottom-color: #4d4d4d !important; }
+    [id*="summary"] h3 strong, [id*="summary"] h3 span {
+      background-color: #232629 !important;
+      color: #4d4d4d !important; }
+  [id*="summary"] li {
+    margin-left: 5px !important;
+    margin-right: 5px !important; }
+
+  #start-session a {
+    background-color: #2ecc71 !important;
+    color: #434343 !important; }
+  #start-session .disabled {
+    background-color: #232629 !important;
+    color: #bcbcbc !important; }
+
+  #review-stats {
+    color: #bcbcbc; }
+    #review-stats [id^="review-stats"]::after {
+      display: none !important; }
+
+  .hover li {
+    color: #bcbcbc !important; }
+
+  #main-info.radical #character {
+    color: /*[[radicals-color]]*/ !important; }
+
+  #main-info.kanji #character {
+    color: /*[[kanji-color]]*/ !important; }
+
+  #main-info.vocabulary #character {
+    color: /*[[vocab-color]]*/ !important; }
+
+  #lessons header {
+    background-color: #232629 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+    z-index: 11 !important;
+    background-image: none !important; }
+
+  #supplement-nav {
+    background-color: #191c1e !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+    z-index: 9 !important;
+    background-image: none !important;
+ }
+    #supplement-nav li::before {
+      border-bottom-color: #232629 !important;
+      bottom: -50px !important;
+      color: #232629 !important; }
+
+  #next-btn:hover,
+  #prev-btn:hover {
+    background-color: #232629 !important;
+    border-radius: 5px !important;
+    filter: brightness(0.8) !important; }
+
+  #supplement-info {
+    color: #bcbcbc;
+    margin-top: 30px !important; }
+    #supplement-info h2 {
+      border-bottom-color: #31363b !important; }
+
+  #batch-items {
+    bottom: unset !important;
+    position: relative !important;
+    width: auto !important; }
+
+  #lesson #supplement-info #supplement-kan-breakdown ul li a,
+  #lesson #supplement-info #supplement-voc-breakdown ul li a,
+  #lesson #supplement-info #supplement-kan-related-vocabulary ul li a,
+  #lesson #supplement-info #supplement-rad-related-kanji ul li a {
+    color: #bcbcbc; }
+
+  #screen-lesson-ready {
+    z-index: 110 !important; }
+
+  #screen-quiz-ready {
+    z-index: 110 !important; }
+
+  #reviews #character {
+    background-color: #232629 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    background-image: none !important; }
+
+  #information {
+    color: #bcbcbc; }
+
+  #item-info #all-info:hover {
+    color: #bcbcbc; }
+  #item-info #related-items a, #item-info #related-items a:visited, #item-info #related-items a:hover {
+    color: #bcbcbc; }
+
+  [id^="loading"] {
+    background-color: #191c1e !important; }
+
+  #stats,
+  #summary-button,
+  #header-buttons {
+    color: #bcbcbc !important;
+    z-index: 100 !important; }
+
+  #question-type {
+    background-color: #232629 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+    z-index: 9 !important;
+    background-image: none !important; }
+    #question-type > .srs {
+      left: 70% !important;
+      top: initial !important;
+      width: initial !important; }
+
+  div#question-type, #quiz > div:first-child {
+    height: 5rem;
+    padding: 0; }
+
+  div#question-type {
+    align-items: center;
+    display: flex;
+    justify-content: center; }
+
+  .srs-up::before {
+    color: #2ecc71 !important; }
+
+  .srs-down::before {
+    color: #ed1515 !important; }
+
+  #answer-form {
+    background-color: #232629 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+    z-index: 8 !important;
+    background-image: none !important; }
+    #answer-form fieldset {
+      padding: 0 !important; }
+      #answer-form fieldset.correct input[type=text]:disabled {
+        background-color: #2a9c5a !important; }
+      #answer-form fieldset.incorrect input[type=text]:disabled {
+        background-color: #b11f1f !important; }
+    #answer-form input {
+      border-radius: 0 !important; }
+    #answer-form button {
+      height: 2.3em !important; }
+
+  #additional-content {
+    background-color: #191c1e !important;
+    /*box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important;*/
+      /*box-shadow: 0;*/
+    position: relative !important;
+    z-index: 6 !important;
+    background-image: none !important;
+    height: 50px !important;
+    margin: 0 !important; }
+    #additional-content ul {
+      align-items: center !important;
+      display: flex !important;
+      height: 100% !important;
+      margin: 0 !important; }
+      #additional-content ul .wrap-up-selected span, #additional-content ul .wrap-up-selected span:hover::before, #additional-content ul .wrap-up-selected span::before {
+        background-color: #191c1e !important; }
+      #additional-content ul .wrap-up-selected strong, #additional-content ul .wrap-up-selected i {
+        text-shadow: 0 0 10px #f47750 !important; }
+    #additional-content li::before {
+      border-bottom-color: #232629 !important;
+      bottom: -25px !important;
+      color: #232629 !important; }
+    #additional-content li > span {
+      z-index: 7 !important; }
+      #additional-content li > span:hover::before {
+        background-color: #191c1e !important;
+        color: #bcbcbc !important; }
+    
+    #reviews footer {
+        display: none;
+    }
+
+  #answer-exception span {
+    background-color: #4d4d4d !important;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important; }
+    #answer-exception span::before {
+      display: none !important; }
+
+  #last-items li ul {
+    background-color: #191c1e !important; }
+    #last-items li ul [title*=meaning],
+    #last-items li ul [title*=reading] {
+      color: #bcbcbc !important; }
+
+  #information {
+    z-index: 8 !important; }
+
+  #item-info h2 {
+    border-bottom-color: #31363b !important; }
+
+  #kana-chart ol {
+    border-bottom-color: #31363b !important; }
+  #kana-chart .active {
+    border-bottom: none !important;
+    border-left: 1px solid #31363b !important;
+    border-right: 1px solid #31363b !important; }
+  #kana-chart li {
+    border-right-color: #31363b !important; }
+    #kana-chart li:hover {
+      background-color: #232629 !important;
+      filter: brightness(0.8) !important; }
+
+  #additional-content-load {
+    background-color: #232629 !important; }
+
+  .avatar {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset, 2px 2px 2px rgba(0, 0, 0, 0.7) inset !important; }
+    .avatar img {
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important; }
+
+  .user-info {
+    background-color: #232629 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    background-image: none !important; }
+    .user-info::after {
+      border-bottom-color: #232629 !important; }
+
+  .wall-of-shame h3 > span {
+    background-color: #232629 !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset, 2px 2px 2px rgba(0, 0, 0, 0.7) inset !important; }
+
+  /*[[review-char-bg]]*/
+  #wkof_ds .ui-dialog-titlebar {
+    border-bottom: 1px solid #232629 !important;
+    border-radius: 0;
+    color: #bcbcbc !important; }
+  #wkof_ds .ui-dialog-buttonpane {
+    border-top: 1px solid #232629 !important; }
+  #wkof_ds .ui-dialog-content fieldset.wkof_group legend:nth-child(1) {
+    color: #bcbcbc;
+    float: left;
+    margin-bottom: 10px; }
+    #wkof_ds .ui-dialog-content fieldset.wkof_group legend:nth-child(1) + * {
+      clear: both; }
+  #wkof_ds .ui-dialog-content fieldset.wkof_group + fieldset.wkof_group {
+    border-radius: 0;
+    border-top: 1px solid #232629 !important; }
+  #wkof_ds .ui-dialog-content section {
+    color: #bcbcbc; }
+  #wkof_ds .ui-dialog-content hr {
+    border-bottom-width: 0;
+    border-top-color: #232629 !important; }
+  #wkof_ds .ui-dialog-content .row .left {
+    line-height: 2em; }
+  #wkof_ds .ui-dialog-content .row .right {
+    line-height: 2em; }
+  #wkof_ds .ui-icon {
+    background-image: url("https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/images/ui-icons_888888_256x240.png") !important;
+    box-shadow: none !important; }
+  #wkof_ds .ui-tabs-nav {
+    border-bottom: 1px solid #232629 !important;
+    margin-bottom: 0 !important; }
+  #wkof_ds .ui-tabs-active {
+    background-color: #232629 !important;
+    border-radius: 5px 5px 0 0; }
+  #wkof_ds .ui-tabs-anchor {
+    color: #bcbcbc !important; }
+
+  #reviews #summary-button [class*="-icon"], #reviews #summary-button li, #lessons #summary-button [class*="-icon"], #lessons #summary-button li {
+    box-shadow: none !important; }
+  #reviews #summary-button li:not(.scripts-header), #lessons #summary-button li:not(.scripts-header) {
+    transition: background 0.2s; }
+    #reviews #summary-button li:not(.scripts-header):hover, #lessons #summary-button li:not(.scripts-header):hover {
+      background-color: rgba(255, 255, 255, 0.2) !important; }
+  #reviews #summary-button .dropdown-menu .dropdown-menu, #lessons #summary-button .dropdown-menu .dropdown-menu {
+    margin-left: 5px; }
+
+  #wki_button {
+    border-color: #232629 !important;
+    border-right: 1px solid !important; }
+
+  [id|=qtip] {
+    background-color: #232629 !important; }
+
+  [id|=qtip] .qtip-titlebar,
+  [id|=qtip] .qtip-title {
+    background-color: #1d99f3 !important; }
+
+  #wki_settings_cancel,
+  #wki_settings_save {
+    background-color: #232629 !important; }
+
+  #wki_settings_button_label_bgcolor,
+  #wki_settings_button_label_textcolor,
+  #wki_settings_timer_show_next_item {
+    background-color: #232629 !important; }
+
+  [id|=qtip] .qtip-tip,
+  [id|=qtip] canvas {
+    color: #232629 !important; }
+
+  #lessons .ui,
+  #reviews .ui {
+    margin: 10px !important;
+    padding: 10px !important; }
+    #lessons .ui #quick-next,
+    #reviews .ui #quick-next {
+      color: #4d4d4d !important; }
+      #lessons .ui #quick-next.active,
+      #reviews .ui #quick-next.active {
+        color: #bcbcbc !important; }
+        #lessons .ui #quick-next.active::before,
+        #reviews .ui #quick-next.active::before {
+          text-shadow: 0 0 10px rgba(61, 174, 233, 0.5) !important; }
+    #lessons .ui ul item,
+    #reviews .ui ul item {
+      background-color: #191c1e !important; }
+
+  #timeline {
+    padding: 0.5rem !important; }
+    #timeline .graph_panel {
+      overflow: hidden !important; }
+    #timeline .graph .bkgd {
+      fill: transparent; }
+    #timeline .graph .label-x > text,
+    #timeline .graph .label-y > text,
+    #timeline .graph .markers > path {
+      fill: #bcbcbc; }
+    #timeline .graph .markers > .bur {
+      fill: #191c1e !important; }
+    #timeline .graph .rad {
+      fill: /*[[radicals-color]]*/ !important; }
+    #timeline .graph .kan {
+      fill: /*[[kanji-color]]*/ !important; }
+    #timeline .graph .voc {
+      fill: /*[[vocab-color]]*/ !important; }
+    #timeline .review_info .detail_buttons > button {
+      margin-bottom: 0.3em; }
+    #timeline .review_info .summary .item_type:first-child,
+    #timeline .review_info .summary .srs_stage:nth-child(4),
+    #timeline .review_info .summary .level:nth-child(8) {
+      border-top-left-radius: 0.3em;
+      border-top-right-radius: 0.3em; }
+    #timeline .review_info .summary .item_type:nth-child(3),
+    #timeline .review_info .summary .srs_stage:nth-child(7),
+    #timeline .review_info .summary .level:nth-child(13) {
+      border-bottom-left-radius: 0.3em;
+      border-bottom-right-radius: 0.3em; }
+    #timeline .review_info .tot {
+      color: #bcbcbc !important; }
+    #timeline .review_info .bur {
+      background: #191c1e !important; }
+    #timeline .review_info .item_type > span {
+      color: #232629 !important; }
+    #timeline .review_info .rad svg {
+      stroke: #232629; }
+
+  .progression .lattice-single-character li > a[data-srs-lvl="5"], .progression .lattice-single-character li > a[data-srs-lvl="6"], .progression .lattice-single-character li > a[data-srs-lvl="7"], .progression .lattice-single-character li > a[data-srs-lvl="8"], .progression .lattice-single-character li > a[data-srs-lvl="9"], .progression .lattice-single-character li > a[data-srs-lvl="10"] {
+    filter: brightness(0.5) !important; }
+
+  .progression .lattice-single-character ul > .pct90 {
+    background-color: #191c1e !important; }
+
+  .progress-entries .popover {
+    color: #bcbcbc; }
+    .progress-entries .popover.left .arrow, .progress-entries .popover.left .arrow::after {
+      border-left-color: #4d4d4d; }
+    .progress-entries .popover.right .arrow, .progress-entries .popover.right .arrow::after {
+      border-right-color: #4d4d4d; }
+
+  [aria-describedby=divSRSGridSettings] .ui-dialog-content input, [aria-describedby=divSRSGridSettings] .ui-dialog-content select,
+  [aria-describedby=ui-id-2] .ui-dialog-content input,
+  [aria-describedby=ui-id-2] .ui-dialog-content select {
+    min-width: 250px !important; }
+
+  #WKO_button {
+    background-color: #ed1515 !important;
+    color: #434343 !important; }
+
+  #answer-form fieldset.WKO_ignored input[type="text"]:disabled,
+  #answer-form fieldset.WKO_ignored button {
+    background-color: #f67400 !important; }
+
+  #item_marker_body h3 {
+    color: #434343 !important; }
+  #item_marker_body #item_marker_settings {
+    padding: 5px !important; }
+
+  #marked_items {
+    padding: 10px !important; }
+    #marked_items #marked_items_buttons > button {
+      margin-right: 10px !important; }
+    #marked_items #marked_items_list {
+      display: flex !important;
+      flex-wrap: wrap !important; }
+      #marked_items #marked_items_list > a {
+        margin: 5px 5px 0 0 !important; }
+        #marked_items #marked_items_list > a:hover {
+          text-decoration: none !important; }
+
+  .wklc {
+    justify-content: space-around !important;
+    margin: 1em 1.3em !important; }
+    .wklc .wklc-items {
+      margin: 0 !important; }
+    .wklc .wklc-item {
+      color: #bcbcbc !important;
+      min-width: 2em !important;
+      padding: 0 0.2em; }
+    .wklc [class*=apprentice] {
+      color: #1d99f3 !important; }
+    .wklc [class*=guru] {
+      color: #1cdc9a !important; }
+    .wklc [class*=master] {
+      color: #c9ce3b !important; }
+    .wklc [class*=enlightened] {
+      color: #f67400 !important; }
+    .wklc .wklc-apprentice1,
+    .wklc .wklc-guru1 {
+      filter: saturate(1) !important; }
+    .wklc .wklc-apprentice2,
+    .wklc .wklc-guru2 {
+      filter: saturate(0.5) !important; }
+    .wklc .wklc-apprentice3,
+    .wklc .wklc-guru3 {
+      filter: saturate(0.33333) !important; }
+    .wklc .wklc-apprentice4,
+    .wklc .wklc-guru4 {
+      filter: saturate(0.25) !important; }
+
+  svg#stroke_order {
+    filter: invert(80%) !important;
+    opacity: 0.5 !important; }
+
+  #ss_quiz {
+    padding: 0.5rem !important; }
+    #ss_quiz .quiz-progress {
+      align-items: center !important;
+      background-color: #1e2123 !important;
+      border-radius: 10px !important;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset, 2px 2px 2px rgba(0, 0, 0, 0.7) inset !important;
+      height: 1rem !important; }
+      #ss_quiz .quiz-progress .quiz-progress-bar {
+        background-color: #1d99f3 !important;
+        border-radius: 10px !important;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important;
+        height: 50% !important;
+        margin: 5px !important;
+        position: relative;
+        top: 25%; }
+    #ss_quiz .help {
+      color: #3daee9 !important; }
+    #ss_quiz .qtype {
+      border-radius: 5px !important;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7) inset, 2px 2px 2px rgba(0, 0, 0, 0.7) inset !important; }
+    #ss_quiz .reading {
+      background-color: /*[[review-reading-bg]]*/ !important; }
+    #ss_quiz .meaning {
+      background-color: /*[[review-meaning-bg]]*/ !important; }
+    #ss_quiz .answer {
+      margin-top: 0.5rem !important;
+      padding: 0 !important; }
+      #ss_quiz .answer .correct {
+        background-color: #2ecc71 !important;
+        color: #434343 !important; }
+      #ss_quiz .answer .incorrect {
+        background-color: #b11f1f !important;
+        color: #434343 !important; }
+
+  .vocabulary-progress li > a, .vocabulary-progress li > div {
+    font-size: 1.1em !important; }
+  .vocabulary-progress li > li {
+    background-color: #1478ac !important;
+    border-color: transparent !important; }
+  .vocabulary-progress ul li:nth-child(2) a, .vocabulary-progress ul li:nth-child(2) div {
+    background-color: #17191b !important;
+    color: #bcbcbc !important; }
+
+  #keisei_section table {
+    box-sizing: border-box !important;
+    width: 100% !important; }
+    #keisei_section table li {
+      box-sizing: inherit !important; }
+  #keisei_section .single-character-grid {
+    border: 0 !important; }
+  #keisei_section .keisei_chargrid_header,
+  #keisei_section .keisei_chargrid_compounds {
+    width: auto !important; }
+    #keisei_section .keisei_chargrid_header .character-item,
+    #keisei_section .keisei_chargrid_compounds .character-item {
+      width: 116px !important; }
+    @media (max-width: 767px) {
+      #keisei_section .keisei_chargrid_header .character-item,
+      #keisei_section .keisei_chargrid_compounds .character-item {
+        width: auto !important; } }
+  #keisei_section #keisei_phonetic_grid td > li {
+    margin-bottom: 10px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    margin-top: 5px !important; }
+    #keisei_section #keisei_phonetic_grid td > li:last-child {
+      margin-bottom: 5px !important; }
+  #keisei_section .character-item {
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.7) !important; }
+  #keisei_section [id^=phonetic] {
+    background-color: #11d116 !important;
+    color: #232629 !important; }
+  #keisei_section [id^=nonphonetic] {
+    background-color: #da4453 !important;
+    color: #232629 !important; }
+  #keisei_section .keisei_style_reading_notInWK {
+    color: dimgray !important; }
+
+  #keisei_modal_settings .modal-header,
+  #keisei_modal_info .modal-header {
+    border-bottom: 1px solid #31363b !important; }
+  #keisei_modal_settings .modal-footer,
+  #keisei_modal_info .modal-footer {
+    background-color: inherit !important;
+    border-top: 1px solid #31363b !important; }
+
+  .wkof_group.filters .row {
+    border-color: #232629 !important; }
+    .wkof_group.filters .row.checked {
+      background-color: #232629 !important; }
+    .wkof_group.filters .row .enable {
+      line-height: 30px; }
+      .wkof_group.filters .row .enable input {
+        vertical-align: text-bottom; } }
+
+/*# sourceMappingURL=main.css.map */
+
+
